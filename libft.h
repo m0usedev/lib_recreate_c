@@ -6,13 +6,13 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:59:48 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/08 10:01:56 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:55:51 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT.H
-#define LIBFT.H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-
+int	ft_isalpha(int c);
 
 #endif
