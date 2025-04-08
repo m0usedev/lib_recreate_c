@@ -2,7 +2,7 @@
 NAME = libft
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = main.c ft_isalpha.c # Aquí deberías poner tus archivos fuente
+SRC = main.c ft_isalpha.c ft_isdigit.c # Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
 RM = rm -f  # Comando para eliminar archivos
