@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/08 13:47:58 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/08 14:01:00 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,21 @@ void	ft_isalnum_test(void)
 	}
 	printf("Un caracter no alfabetico o numerico: [ - %i\n", ft_isalnum('['));
 }
+void	ft_isascii_test(void)
+{
+	print_divisor_title("ft_isascii");
+	printf("Test: -1 -> %i\n", ft_isascii(-1));
+	printf("Test: 0 -> %i\n", ft_isascii(0));
+	printf("Test: 50 -> %i\n", ft_isascii(50));
+	printf("Test: 127 -> %i\n", ft_isascii(127));
+	printf("Test: 128 -> %i\n", ft_isascii(128));
+}
 
 int	main(void)
 {
 	// ft_isalpha_test();
 	// ft_isdigit_test();
 	// ft_isalnum_test();
+	// ft_isascii_test();
 	return (0);
 }
