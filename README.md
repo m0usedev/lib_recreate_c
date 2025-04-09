@@ -16,4 +16,5 @@
 	```
 5. Eliminar todos los ejecutables, .o y .a
 6. Eliminar .gitignore
-4. Eliminar README.md y hacer un commit y push a origin
+7. Eliminar pdf
+8. Eliminar README.md y hacer un commit y push a origin
