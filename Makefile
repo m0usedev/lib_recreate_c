@@ -8,6 +8,7 @@ SRC = main.c \
 	ft_isalnum.c \
 	ft_isascii.c \
 	ft_isprint.c \
+	ft_strlen.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática

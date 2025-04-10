@@ -6,12 +6,13 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 13:01:52 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:23:48 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <ctype.h>
+#include <stddef.h>
 #include <stdio.h>
 
 void	print_divisor_title(char *title)
@@ -94,12 +95,21 @@ void	ft_isprint_test(void)
 	printf("Test: '9' -> %i\n", ft_isprint('9'));
 }
 
+void	ft_strlen_test(void)
+{
+	print_divisor_title("ft_strlen");
+	printf("Test: \"pepe\" -> %li\n", ft_strlen("pepe"));
+	printf("Test: \"\" -> %li\n", ft_strlen(""));
+	printf("Test: \" \" -> %li\n", ft_strlen(" "));
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
 	// ft_isdigit_test();
 	// ft_isalnum_test();
 	// ft_isascii_test();
-	ft_isprint_test();
+	// ft_isprint_test();
+	// ft_strlen_test();
 	return (0);
 }
