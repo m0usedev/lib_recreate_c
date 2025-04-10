@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:26:09 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 20:32:21 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:35:10 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	char	*aux;
 
 	aux = (char *)s;
-	while (n > 0)
-	{
+	while (n--)
 		*aux++ = c;
-		n--;
-	}
 	return (s);
 }
