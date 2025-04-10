@@ -6,12 +6,13 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 19:13:48 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:27:01 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <ctype.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -148,6 +149,71 @@ void	ft_memcpy_test(void)
 	ft_memcpy(destino, origen, 10);
 	printf("Texto copiado: %s\n", destino);
 }
+bool	ft_memmove_compare_results(const char *label, const char *std_buf,
+		const char *my_buf, size_t size)
+{
+	if (memcmp(std_buf, my_buf, size) == 0)
+	{
+		printf("[OK] %s: Resultado coincide con memmove\n", label);
+		return (true);
+	}
+	else
+	{
+		printf("[FALLO] %s: Resultado DIFERENTE a memmove\n", label);
+		printf("memmove:   \"%.*s\"\n", (int)size, std_buf);
+		printf("ft_memmove: \"%.*s\"\n", (int)size, my_buf);
+		return (false);
+	}
+}
+
+bool	ft_memmove_test(void)
+{
+	const size_t	buf_size = 100;
+	char			std_buf[buf_size], my_buf[buf_size];
+	bool			all_ok;
+
+	print_divisor_title("ft_memmove");
+	all_ok = true;
+	strcpy(std_buf, "1234567890");
+	strcpy(my_buf, "1234567890");
+	memmove(std_buf + 5, std_buf, 5);
+	ft_memmove(my_buf + 5, my_buf, 5);
+	all_ok &= ft_memmove_compare_results("Copia sin solapamiento", std_buf,
+			my_buf, buf_size);
+	strcpy(std_buf, "abcdef");
+	strcpy(my_buf, "abcdef");
+	memmove(std_buf + 2, std_buf, 4);
+	ft_memmove(my_buf + 2, my_buf, 4);
+	all_ok &= ft_memmove_compare_results("Solapamiento src < dest", std_buf,
+			my_buf, buf_size);
+	strcpy(std_buf, "abcdef");
+	strcpy(my_buf, "abcdef");
+	memmove(std_buf, std_buf + 2, 4);
+	ft_memmove(my_buf, my_buf + 2, 4);
+	all_ok &= ft_memmove_compare_results("Solapamiento src > dest", std_buf,
+			my_buf, buf_size);
+	strcpy(std_buf, "nochange");
+	strcpy(my_buf, "nochange");
+	memmove(std_buf + 2, std_buf, 0);
+	ft_memmove(my_buf + 2, my_buf, 0);
+	all_ok &= ft_memmove_compare_results("Copia de 0 bytes", std_buf, my_buf,
+			buf_size);
+	strcpy(std_buf, "mismo lugar");
+	strcpy(my_buf, "mismo lugar");
+	memmove(std_buf, std_buf, 10);
+	ft_memmove(my_buf, my_buf, 10);
+	all_ok &= ft_memmove_compare_results("src == dest", std_buf, my_buf,
+			buf_size);
+	if (all_ok)
+	{
+		printf("\n✅ Todos los tests de ft_memmove han pasado correctamente.\n");
+	}
+	else
+	{
+		printf("\n❌ Algunos tests de ft_memmove han fallado.\n");
+	}
+	return (all_ok);
+}
 
 int	main(void)
 {
@@ -159,6 +225,7 @@ int	main(void)
 	// ft_strlen_test();
 	// ft_memset_test();
 	// ft_bzero_test();
-	ft_memcpy_test();
+	// ft_memcpy_test();
+	ft_memmove_test();
 	return (0);
 }
