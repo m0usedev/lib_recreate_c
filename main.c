@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 14:29:35 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:11:42 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,25 @@ void	ft_memset_test(void)
 	printf("Test: aux -> %s\n", aux);
 }
 
+void	ft_bzero_test(void)
+{
+	char	s[] = "pepe";
+	char	*pt_s;
+	int		n;
+
+	n = 4;
+	pt_s = s;
+	print_divisor_title("ft_bzero");
+	ft_bzero(s, 2);
+	printf("Test: \"pepe\" -> ");
+	while (n--)
+	{
+		printf("%i ", *pt_s);
+		pt_s++;
+	}
+	printf("\n");
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -129,5 +148,6 @@ int	main(void)
 	// ft_isprint_test();
 	// ft_strlen_test();
 	// ft_memset_test();
+	// ft_bzero_test();
 	return (0);
 }
