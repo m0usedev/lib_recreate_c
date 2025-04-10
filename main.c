@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/08 14:01:00 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 13:01:52 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,20 @@ void	ft_isascii_test(void)
 	printf("Test: 128 -> %i\n", ft_isascii(128));
 }
 
+void	ft_isprint_test(void)
+{
+	print_divisor_title("ft_isprint");
+	printf("Test: '\\n' -> %i\n", ft_isprint('\n'));
+	printf("Test: ' ' -> %i\n", ft_isprint(' '));
+	printf("Test: '9' -> %i\n", ft_isprint('9'));
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
 	// ft_isdigit_test();
 	// ft_isalnum_test();
 	// ft_isascii_test();
+	ft_isprint_test();
 	return (0);
 }
