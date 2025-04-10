@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 16:11:42 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:41:11 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,17 @@ void	ft_bzero_test(void)
 	printf("\n");
 }
 
+void	ft_memcpy_test(void)
+{
+	char	origen[] = "Hola mundo";
+	char	destino[20] = "";
+
+	print_divisor_title("ft_memcpy");
+	// Copiamos el contenido de 'origen' a 'destino'
+	ft_memcpy(destino, origen, 10); // +1 para copiar el '\0'
+	printf("Texto copiado: %s\n", destino);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -149,5 +160,6 @@ int	main(void)
 	// ft_strlen_test();
 	// ft_memset_test();
 	// ft_bzero_test();
+	ft_memcpy_test();
 	return (0);
 }

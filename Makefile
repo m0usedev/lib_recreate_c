@@ -11,6 +11,7 @@ SRC = main.c \
 	ft_strlen.c \
 	ft_memset.c \
 	ft_bzero.c \
+	ft_memcpy \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
