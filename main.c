@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 13:23:48 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:29:35 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void	print_divisor_title(char *title)
 {
@@ -103,6 +105,21 @@ void	ft_strlen_test(void)
 	printf("Test: \" \" -> %li\n", ft_strlen(" "));
 }
 
+void	ft_memset_test(void)
+{
+	char	cad[10];
+	char	*aux;
+
+	ft_memset(cad, 0, 10);
+	aux = (char *)ft_memset(cad, 'A', 9);
+	print_divisor_title("ft_memset");
+	printf("Test: cad -> %s\n", cad);
+	printf("Test: aux -> %s\n", aux);
+	aux = (char *)ft_memset(cad, 'B', 4);
+	printf("Test: cad -> %s\n", cad);
+	printf("Test: aux -> %s\n", aux);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -111,5 +128,6 @@ int	main(void)
 	// ft_isascii_test();
 	// ft_isprint_test();
 	// ft_strlen_test();
+	// ft_memset_test();
 	return (0);
 }
