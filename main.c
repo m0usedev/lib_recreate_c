@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 11:09:34 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:49:02 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,26 @@ void	ft_memmove_test(void)
 		printf("Test 4 FALLÓ\n");
 }
 
+void	ft_strlcpy_test(void)
+{
+	char		dst1[10];
+	const char	*src = "hola mundo";
+	size_t		r1;
+
+	print_divisor_title("ft_strlcpy");
+	r1 = ft_strlcpy(dst1, src, 10);
+	if (r1 == strlen(src) && strcmp(dst1, "hola mund") == 0)
+	{
+		printf("Test pasado\n");
+	}
+	else
+	{
+		printf("Test fallido\n");
+		printf("Esperado: %s (%zu)\n", "hola mund", strlen(src));
+		printf("Obtenido: %s (%zu)\n", dst1, r1);
+	}
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -199,5 +219,6 @@ int	main(void)
 	// ft_bzero_test();
 	// ft_memcpy_test();
 	// ft_memmove_test();
+	ft_strlcpy_test();
 	return (0);
 }
