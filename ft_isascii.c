@@ -6,13 +6,16 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:54:23 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/10 15:47:29 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:45:06 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	if (c >= 0 && c <= 127)
+	unsigned char	l;
+
+	l = (unsigned char)c;
+	if (l >= 0 && l <= 127)
 		return (1);
 	return (0);
 }
