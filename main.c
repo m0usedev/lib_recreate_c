@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 11:49:02 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:00:29 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,39 @@ void	ft_strlcpy_test(void)
 	}
 }
 
+// void	ft_strlcat_test(void)
+// {
+// 	char	buffer[10] = "Hola";
+// 	size_t	result;
+// 	char	*b;
+
+// 	b = buffer;
+// 	result = ft_strlcat(buffer, "-Mundo", 3);
+// 	printf("Resultado: %s\n", buffer);
+// 	printf("Resultado: ");
+// 	while (*b)
+// 	{
+// 		printf("%i|", *b);
+// 		b++;
+// 	}
+// 	printf("%i|", *b);
+// 	printf("\nValor devuelto: %zu\n", result); // 11 (4 + 7)
+// }
+
+void	ft_strlcat_test(void)
+{
+	char		dst1[30] = "Hola, ";
+	char		dst2[30] = "Hola, ";
+	const char	*src = "mundo!";
+	size_t		dstsize;
+	size_t		ret2;
+
+	dstsize = 20;
+	ret2 = ft_strlcat(dst2, src, dstsize);
+	printf("strlcat:    [%s] (%d)\n", dst1, strlcat(dst1, src, dstsize));
+	printf("ft_strlcat: [%s] (%zu)\n", dst2, ret2);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -219,6 +252,7 @@ int	main(void)
 	// ft_bzero_test();
 	// ft_memcpy_test();
 	// ft_memmove_test();
-	ft_strlcpy_test();
+	// ft_strlcpy_test();
+	ft_strlcat_test();
 	return (0);
 }

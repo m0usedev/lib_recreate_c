@@ -1,9 +1,8 @@
 # Variables
-NAME = libft
+NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = main.c \
-	ft_isalpha.c \
+SRC = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
 	ft_isascii.c \
@@ -14,6 +13,8 @@ SRC = main.c \
 	ft_memcpy.c \
 	ft_memmove.c \
 	ft_strlcpy.c \
+	ft_strlcat.c \
+	#main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
@@ -24,7 +25,7 @@ all: $(NAME)
 
 # Regla para crear la librería estática
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(AR) $(NAME) $(OBJ)
 
 # Regla para limpiar los objetos
 clean:
