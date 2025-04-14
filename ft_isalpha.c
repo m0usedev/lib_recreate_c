@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:22:10 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 10:45:21 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/14 09:10:09 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_isalpha(int c)
 {
-	unsigned char	l;
-
-	l = (unsigned char)c;
-	if ((l >= 65 && l <= 90) || (l >= 97 && l <= 122))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1024);
 	return (0);
 }

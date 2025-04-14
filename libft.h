@@ -6,13 +6,14 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:59:48 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 12:58:18 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/14 09:51:34 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stddef.h>
 # include <unistd.h>
 
 int		ft_isalpha(int c);

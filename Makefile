@@ -14,7 +14,7 @@ SRC = ft_isalpha.c \
 	ft_memmove.c \
 	ft_strlcpy.c \
 	ft_strlcat.c \
-	#main.c \
+	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática

@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:54:39 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 14:26:00 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/14 09:12:05 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	unsigned char	l;
-
-	l = (unsigned char)c;
-	if (l >= 32 && l <= 126)
+	if (c >= 32 && c <= 126)
 		return (16384);
 	return (0);
 }

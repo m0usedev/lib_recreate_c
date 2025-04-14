@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 14:00:29 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:21:54 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,16 @@ void	ft_memcpy_test(void)
 {
 	char	origen[] = "Hola mundo";
 	char	destino[20] = "";
+	char	*res_null;
 
 	print_divisor_title("ft_memcpy");
 	ft_memcpy(destino, origen, 10);
 	printf("Texto copiado: %s\n", destino);
+	res_null = ft_memcpy(NULL, NULL, 3);
+	if (!res_null)
+		printf("test null SI pasado\n");
+	else
+		printf("test null NO pasado\n");
 }
 
 void	ft_memmove_test(void)
@@ -226,19 +232,19 @@ void	ft_strlcpy_test(void)
 // 	printf("\nValor devuelto: %zu\n", result); // 11 (4 + 7)
 // }
 
-void	ft_strlcat_test(void)
-{
-	char		dst1[30] = "Hola, ";
-	char		dst2[30] = "Hola, ";
-	const char	*src = "mundo!";
-	size_t		dstsize;
-	size_t		ret2;
+// void	ft_strlcat_test(void)
+// {
+// 	char		dst1[30] = "Hola, ";
+// 	char		dst2[30] = "Hola, ";
+// 	const char	*src = "mundo!";
+// 	size_t		dstsize;
+// 	size_t		ret2;
 
-	dstsize = 20;
-	ret2 = ft_strlcat(dst2, src, dstsize);
-	printf("strlcat:    [%s] (%d)\n", dst1, strlcat(dst1, src, dstsize));
-	printf("ft_strlcat: [%s] (%zu)\n", dst2, ret2);
-}
+// 	dstsize = 20;
+// 	ret2 = ft_strlcat(dst2, src, dstsize);
+// 		printf("strlcat:    [%s] (%d)\n", dst1, strlcat(dst1, src, dstsize));
+// 	printf("ft_strlcat: [%s] (%zu)\n", dst2, ret2);
+// }
 
 int	main(void)
 {
@@ -250,9 +256,9 @@ int	main(void)
 	// ft_strlen_test();
 	// ft_memset_test();
 	// ft_bzero_test();
-	// ft_memcpy_test();
+	ft_memcpy_test();
 	// ft_memmove_test();
 	// ft_strlcpy_test();
-	ft_strlcat_test();
+	// ft_strlcat_test();
 	return (0);
 }

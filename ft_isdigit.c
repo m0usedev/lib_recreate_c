@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:16:54 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/11 10:43:47 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/14 09:09:28 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	unsigned char	l;
-
-	l = (unsigned char)c;
-	if (l >= 48 && l <= 57)
+	if (c >= 48 && c <= 57)
 		return (2048);
 	return (0);
 }
