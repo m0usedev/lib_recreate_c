@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/15 11:40:00 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:46:04 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,24 @@ void	ft_strchr_test(void)
 		printf(" resultado: NO DIO NULL\n");
 }
 
+void	ft_strrchr_test(void)
+{
+	char	cad[] = "0123456789";
+	char	*res;
+
+	print_divisor_title("ft_strrchr");
+	printf("Buscado 2 | espearmos: '789' | resultado: '%s'\n", ft_strrchr(cad,
+			'7'));
+	printf("Buscado '\\0' | espearmos: '0' | resultado: '%i'\n",
+		*ft_strrchr(cad, '\0'));
+	printf("Buscado a | espearmos: NULL |");
+	res = ft_strrchr(cad, 'a');
+	if (!res)
+		printf(" resultado: NULL\n");
+	else
+		printf(" resultado: NO DIO NULL\n");
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -313,6 +331,7 @@ int	main(void)
 	// ft_strlcat_test();
 	// ft_toupper_test();
 	// ft_tolower_test();
-	ft_strchr_test();
+	// ft_strchr_test();
+	ft_strrchr_test();
 	return (0);
 }
