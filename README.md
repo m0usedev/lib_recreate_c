@@ -1,4 +1,5 @@
 # Antes de terminar de subirlo
+0. revisar el main y los test
 1. Cambiar NAME a libft.a
 2. Eliminar del Makefile: mane.c
 3. Eliminar main.c
