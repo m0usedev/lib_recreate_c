@@ -20,6 +20,7 @@ SRC = ft_isalpha.c \
 	ft_strrchr.c \
 	ft_strncmp.c \
 	ft_memchr.c \
+	ft_memcmp.c \
 	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
