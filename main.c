@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/14 10:21:54 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:22:21 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,23 @@ void	ft_strlcpy_test(void)
 // 	printf("ft_strlcat: [%s] (%zu)\n", dst2, ret2);
 // }
 
+void	ft_toupper_test(void)
+{
+	char	l;
+
+	print_divisor_title("ft_toupper");
+	l = 'a';
+	while (l <= 'z')
+	{
+		printf("Minus to Mayus: %c - %c\n", l, ft_toupper(l));
+		l++;
+	}
+	printf("Mayus to Mayus: %c - %c\n", 'A', ft_toupper('A'));
+	printf("'1' to Mayus: %c - %c\n", '1', ft_toupper('1'));
+	printf("'[' to Mayus: %c - %c\n", '[', ft_toupper('['));
+	printf("-2 to Mayus: %i - %i\n", -2, ft_toupper(-2));
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -256,9 +273,10 @@ int	main(void)
 	// ft_strlen_test();
 	// ft_memset_test();
 	// ft_bzero_test();
-	ft_memcpy_test();
+	// ft_memcpy_test();
 	// ft_memmove_test();
 	// ft_strlcpy_test();
 	// ft_strlcat_test();
+	// ft_toupper_test();
 	return (0);
 }
