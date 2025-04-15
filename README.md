@@ -18,6 +18,27 @@
 6. Eliminar .gitignore
 7. Eliminar pdf
 8. Eliminar README.md y hacer un commit y push a origin
+# Indice
+
+1. [Makefile](#makefile)
+	1. [Contenido](#contenido)
+		- [Variables](#variables)
+		- [Reglas](#reglas)
+			- [Regla por defecto (all)](#regla-por-defecto-all)
+			- [Compilación files](#compilación-files)
+			- [Crear objetos .o a partir de .c](#crear-objetos-o-a-partir-de-c)
+			- [clean](#clean)
+			- [fclean](#fclean)
+			- [re (recompilación o relink)](#re-recompilacion-o-relink)
+		- [Variables automáticas](#variables-automaticas)
+		- [Plantilla](#plantilla)
+2. [Conceptos](#conceptos)
+   - [Compilación](#compilacion)
+     - [Compilar](#compilar)
+     - [Enlazar](#enlazar)
+   - [Tipos de compilación](#tipos-de-compilacion)
+     - [Compilar programa](#compilar-programa)
+     - [Compilar una librería estática](#compilar-una-libreria-estatica)
 
 # Makefile
 
@@ -93,12 +114,42 @@ Algunas comunes son:
 
 Son las instrucciones que definen cómo deben generarse los archivos de salida a partir de los archivos de entrada.
 
-#### Regla por defecto
+#### Regla por defecto (all)
 
 ```
 # Regla por defecto
 all: $(NAME)
 ```
+
+En un Makefile, `all` es la regla por defecto, es decir, la que se ejecuta si simplemente usas `make` sin argumentos en la terminal.
+
+Esta regla buscara `$(NAME)` y activara [Compilación files](#compilación-files)
+
+#### Compilación files
+
+- Compilar un programa:
+
+	```
+	$(NAME): $(OBJ)
+		$(CC) $(CFLAGS) -o $@ $^
+	```
+	Este comando compila un programa, un ejecutable directamente desde archivos `.o`.
+
+	Los  simbolos que ves son [variables uatomaticas](#variables-automaticas).
+
+	Cuando empiece a jeecutarse buscara los archivos `$(OBJ)` y revisa si esos `.o` existen o si sus fuentes `.c` han cambiado. Si algún `.o` falta o está desactualizado, pasa a la siguiente regla: [Crear objetos .o a partir de .c](#crear-objetos-o-a-partir-de-c). Despues ejecuta el ccomando con los `.o`ya creados.
+
+- Compilar una libreria estatica:
+
+	```
+	$(NAME): $(OBJ)
+		$(AR) $(NAME) $(OBJ)
+	```
+
+	Esta regla construye una librería estática (normalmente un archivo .a) a partir de archivos objeto .o.
+
+	Cuando empiece a jeecutarse buscara los archivos `$(OBJ)` y revisa si esos `.o` existen o si sus fuentes `.c` han cambiado. Si algún `.o` falta o está desactualizado, pasa a la siguiente regla: [Crear objetos .o a partir de .c](#crear-objetos-o-a-partir-de-c). Despues ejecuta el ccomando con los `.o`ya creados.
+
 
 #### Crear objetos .o a partir de .c
 
@@ -107,21 +158,31 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 ```
-#### Compilacion final
 
-- Compilar un programa:
+Los  simbolos que ves son [variables uatomaticas](#variables-automaticas).
 
-	```
-	$(NAME): $(OBJ)
-		$(CC) $(CFLAGS) -o $@ $^
-	```
+```
+%.o: %.c
+```
 
-- Compilar una libreria estatica:
+- `%.o: %.c` → esta es una regla implícita o regla patrón. Le dice a make cómo compilar cualquier archivo .c en un .o correspondiente.
 
-	```
-	$(NAME): $(OBJ)
-		$(AR) $(NAME) $(OBJ)
-	```
+- `%` → es un comodín que representa el mismo nombre base en ambos lados.
+Ejemplo: main.c se compilará a main.o.
+
+```
+$(CC) $(CFLAGS) -c $< -o $@
+```
+
+- `$(CC)` → el compilador, normalmente cc.
+
+- `$(CFLAGS)` → las opciones de compilación, como `-Wall, -Wextra, -Werror`.
+
+- `$<` → la primera dependencia, en este caso el .c.
+
+- `$@` → el objetivo, en este caso el .o.
+
+Los  simbolos que ves son [variables uatomaticas](#variables-automaticas).
 
 #### clean
 
@@ -131,6 +192,8 @@ clean:
 	$(RM) $(OBJ)
 ```
 
+Invocar este comando junto a make `make clean`lo que hace es ejecutar `rm -f func1.o fun2.o...`. Es para eliminar todos los `.o`.
+
 #### fclean
 ```
 # Regla para eliminar todo (librería y objetos)
@@ -138,11 +201,35 @@ fclean: clean
 	$(RM) $(NAME)
 ```
 
+Invocar este comando junto a make `make fclean`lo que hace es ejecutar [clean](#clean) y despues eleimina tu ejecutable `rm -f ejecutable/libreria`.
+
 #### re (recompilacion o relink)
 ```
 # Regla para recompilar todo
 re: fclean all
 ```
+
+Invocar este comando junto a make `make re`lo que hace es ejecutar [fclean](#fclean) y despues [all](#regla-por-defecto-all) para recompilar.
+
+### Variables automaticas
+
+Esots símbolos `$@` y `$^` (y otros como `$<`, `$?`, etc.) son **variables automáticas** que usa `make` dentro de las reglas para que no tengas que repetir nombres de archivos.
+
+Son súper útiles para que tu Makefile sea más limpio, reutilizable y menos propenso a errores.
+
+---
+
+### 🧩 Las variables automáticas más comunes
+
+| Variable | ¿Qué representa? | Ejemplo si tienes esta regla: `mi_programa: main.o utils.o` |
+|----------|------------------|-------------------------------------------------------------|
+| `$@`     | El nombre del objetivo actual               | `mi_programa`                   |
+| `$^`     | Todas las dependencias (prerequisitos)      | `main.o utils.o`                |
+| `$<`     | La primera dependencia                      | `main.o`                        |
+| `$?`     | Solo las dependencias más nuevas que el objetivo | *(por ejemplo, si solo `utils.o` cambió)* |
+
+---
+
 
 ### Plantilla
 

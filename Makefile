@@ -27,6 +27,10 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
+# Regla para crear los objetos (.o) a partir de los archivos fuente (.c)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 # Regla para limpiar los objetos
 clean:
 	$(RM) $(OBJ)
@@ -37,7 +41,3 @@ fclean: clean
 
 # Regla para recompilar todo
 re: fclean all
-
-# Regla para crear los objetos (.o) a partir de los archivos fuente (.c)
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
