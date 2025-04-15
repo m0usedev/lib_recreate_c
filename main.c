@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/15 16:35:46 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:53:08 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,6 +333,12 @@ void	ft_memcmp_test(void)
 	// me faltan test
 }
 
+void	ft_strnstr_test(void)
+{
+	print_divisor_title("ft_strnstr");
+	// me faltan test
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -353,6 +359,6 @@ int	main(void)
 	// ft_strrchr_test();
 	// ft_strncmp_test();
 	// ft_memchr_test();
-	ft_memcmp_test();
+	// ft_memcmp_test();
 	return (0);
 }
