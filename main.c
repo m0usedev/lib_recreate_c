@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/15 10:22:21 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:35:15 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,23 @@ void	ft_toupper_test(void)
 	printf("-2 to Mayus: %i - %i\n", -2, ft_toupper(-2));
 }
 
+void	ft_tolower_test(void)
+{
+	char	l;
+
+	print_divisor_title("ft_tolower");
+	l = 'A';
+	while (l <= 'Z')
+	{
+		printf("Mayus to Minus: %c - %c\n", l, ft_tolower(l));
+		l++;
+	}
+	printf("Minus to Minus: %c - %c\n", 'a', ft_tolower('a'));
+	printf("'1' to Minus: %c - %c\n", '1', ft_tolower('1'));
+	printf("'[' to Minus: %c - %c\n", '[', ft_tolower('['));
+	printf("-2 to Minus: %i - %i\n", -2, ft_tolower(-2));
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -278,5 +295,6 @@ int	main(void)
 	// ft_strlcpy_test();
 	// ft_strlcat_test();
 	// ft_toupper_test();
+	// ft_tolower_test();
 	return (0);
 }
