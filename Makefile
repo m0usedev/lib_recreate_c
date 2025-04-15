@@ -16,6 +16,7 @@ SRC = ft_isalpha.c \
 	ft_strlcat.c \
 	ft_toupper.c \
 	ft_tolower.c \
+	ft_strchr.c \
 	main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
@@ -27,7 +28,7 @@ all: $(NAME)
 
 # Regla para crear la librería estática
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Regla para crear los objetos (.o) a partir de los archivos fuente (.c)
 %.o: %.c
