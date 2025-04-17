@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/15 16:53:08 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/17 11:10:23 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,6 +339,29 @@ void	ft_strnstr_test(void)
 	// me faltan test
 }
 
+void	ft_atoi_test(void)
+{
+	print_divisor_title("ft_atoi");
+	printf("   '  -23-4' -> -23 -> %i\n", ft_atoi("  -23-4"));
+	printf(" '  \\t-23-4' -> -23 -> %i\n", ft_atoi("  \t-23-4"));
+	printf("     '-23-4' -> -23 -> %i\n", ft_atoi("-23-4"));
+	printf("      '23-4' -> 23 -> %i\n", ft_atoi("23-4"));
+	printf("   '  +23-4' -> 23 -> %i\n", ft_atoi("  +23-4"));
+	printf("       '-23' -> -23 -> %i\n", ft_atoi("-23"));
+	printf("  '23' -> 23 -> %i\n", ft_atoi("23"));
+	printf(" '+23' -> 23 -> %i\n", ft_atoi("+23"));
+	printf("  '  \\t+234' -> 234 -> %i\n", ft_atoi("  \t+234"));
+	printf("   '  \\t234' -> 234 -> %i\n", ft_atoi("  \t234"));
+	printf("   ' -\\t234' -> 234 -> %i\n", ft_atoi("  \t234"));
+	printf("   ' -0' -> 0 -> %i\n", ft_atoi(" -0"));
+}
+
+void	ft_calloc_test(void)
+{
+	print_divisor_title("ft_calloc");
+	// me faltan test
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -360,5 +383,6 @@ int	main(void)
 	// ft_strncmp_test();
 	// ft_memchr_test();
 	// ft_memcmp_test();
+	// ft_atoi_test();
 	return (0);
 }

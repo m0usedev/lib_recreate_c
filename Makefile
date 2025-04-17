@@ -22,6 +22,8 @@ SRC = ft_isalpha.c \
 	ft_memchr.c \
 	ft_memcmp.c \
 	ft_strnstr.c \
+	ft_atoi.c \
+	ft_calloc.c \
 	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
@@ -31,9 +33,15 @@ RM = rm -f  # Comando para eliminar archivos
 # Regla por defecto
 all: $(NAME)
 
+# Reglas de compilacion final
+#
 # Regla para crear la librería estática
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
+#
+# # Regla para crear el programa ejecutable
+# $(NAME): $(OBJ)
+# 	$(CC) $(CFLAGS) -o $@ $^
 
 # Regla para crear los objetos (.o) a partir de los archivos fuente (.c)
 %.o: %.c
