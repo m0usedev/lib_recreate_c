@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/17 11:10:23 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:13:05 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,8 +358,37 @@ void	ft_atoi_test(void)
 
 void	ft_calloc_test(void)
 {
+	int	*res;
+
 	print_divisor_title("ft_calloc");
-	// me faltan test
+	printf("Posiciones: 9223372036854775810 Size: 4 Resultado: NULL\n");
+	res = (int *)ft_calloc(9223223344556666778, 4);
+	if (!res)
+		printf(" resultado: NULL\n");
+	else
+		printf(" resultado: NO DIO NULL\n");
+	free(res);
+	printf("Posiciones: 4 Size: 4 Resultado: NO DIO NULL\n");
+	res = (int *)ft_calloc(4, 4);
+	if (!res)
+		printf(" resultado: NULL\n");
+	else
+		printf(" resultado: NO DIO NULL\n");
+	free(res);
+	printf("Posiciones: 0 Size: 4 Resultado: NO DIO NULL\n");
+	res = (int *)ft_calloc(0, 4);
+	if (!res)
+		printf(" resultado: NULL\n");
+	else
+		printf(" resultado: NO DIO NULL\n");
+	free(res);
+	printf("Posiciones: 4 Size: 0 Resultado: NO DIO NULL\n");
+	res = (int *)ft_calloc(4, 0);
+	if (!res)
+		printf(" resultado: NULL\n");
+	else
+		printf(" resultado: NO DIO NULL\n");
+	free(res);
 }
 
 int	main(void)
@@ -384,5 +413,6 @@ int	main(void)
 	// ft_memchr_test();
 	// ft_memcmp_test();
 	// ft_atoi_test();
+	ft_calloc_test();
 	return (0);
 }
