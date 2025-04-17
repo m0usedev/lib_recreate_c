@@ -6,18 +6,10 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 09:48:49 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/17 10:59:14 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:32:50 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * 1. reccorrer todos los espacios de isspace(3)
- * 2. Recorrerr un solo signo '-' o '+'
- * 3. Recorrer todos los numeros hasta un caracter no numerico.
- *
-
-	* Vamos a empezar con una varaible en 0 si al final no hay numero simplemente devolveremos 0.
- */
 static int	ft_isspace(int c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
