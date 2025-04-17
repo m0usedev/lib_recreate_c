@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/17 12:40:57 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:10:49 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -411,6 +411,12 @@ void	ft_strdup_test(void)
 	free(copy);
 }
 
+void	ft_substr_test(void)
+{
+	print_divisor_title("ft_substr");
+	// me faltan test
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -435,5 +441,6 @@ int	main(void)
 	// ft_atoi_test();
 	// ft_calloc_test();
 	// ft_strdup_test();
+	ft_substr_test();
 	return (0);
 }
