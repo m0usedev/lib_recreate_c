@@ -24,6 +24,7 @@ SRC = ft_isalpha.c \
 	ft_strnstr.c \
 	ft_atoi.c \
 	ft_calloc.c \
+	ft_strdup.c \
 	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
@@ -39,7 +40,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 #
-# # Regla para crear el programa ejecutable
+# Regla para crear el programa ejecutable
 # $(NAME): $(OBJ)
 # 	$(CC) $(CFLAGS) -o $@ $^
 

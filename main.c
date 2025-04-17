@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/17 12:13:05 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:40:57 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,6 +391,26 @@ void	ft_calloc_test(void)
 	free(res);
 }
 
+void	ft_strdup_test(void)
+{
+	char	*copy;
+	char	text[] = "0123456789";
+	int		i;
+
+	i = 0;
+	print_divisor_title("ft_strdup");
+	copy = ft_strdup(text);
+	printf("cad: '0123456789' copy -> %s\n", copy);
+	printf("Tiene \\0 al final?: ");
+	while (copy[i])
+		i++;
+	if (copy[i] == '\0')
+		printf("Si\n");
+	else
+		printf("No\n");
+	free(copy);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -413,6 +433,7 @@ int	main(void)
 	// ft_memchr_test();
 	// ft_memcmp_test();
 	// ft_atoi_test();
-	ft_calloc_test();
+	// ft_calloc_test();
+	// ft_strdup_test();
 	return (0);
 }
