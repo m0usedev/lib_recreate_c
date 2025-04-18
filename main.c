@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/17 14:10:49 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:49:50 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,6 +417,41 @@ void	ft_substr_test(void)
 	// me faltan test
 }
 
+void	ft_strjoin_test(void)
+{
+	char	s1[] = "Hola-";
+	char	s2[] = "Mundo";
+	char	*res;
+	int		i;
+
+	i = 0;
+	print_divisor_title("ft_strjoin");
+	res = ft_strjoin(s1, s2);
+	printf("s1 = 'Hola-' & s2 = 'Mundo' | res -> 'Hola-Mundo' -> '%s'\n", res);
+	printf("Tiene \\0 al final?: ");
+	while (res[i])
+		i++;
+	if (res[i] == '\0')
+		printf("Si\n");
+	else
+		printf("No\n");
+	free(res);
+	res = ft_strjoin(NULL, s2);
+	printf("s1 = NULL & s2 = 'Mundo' | res -> NULL -> ");
+	if (!res)
+		printf("NULL\n");
+	else
+		printf("NO DIO NULL\n");
+	free(res);
+	res = ft_strjoin(s1, NULL);
+	printf("s1 = 'Hola-' & s2 = NULL | res -> NULL -> ");
+	if (!res)
+		printf("NULL\n");
+	else
+		printf("NO DIO NULL\n");
+	free(res);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -441,6 +476,7 @@ int	main(void)
 	// ft_atoi_test();
 	// ft_calloc_test();
 	// ft_strdup_test();
-	ft_substr_test();
+	// ft_substr_test();
+	// ft_strjoin_test();
 	return (0);
 }
