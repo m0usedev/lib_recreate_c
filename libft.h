@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 09:59:48 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/19 13:15:38 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:16:17 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
 
 #endif

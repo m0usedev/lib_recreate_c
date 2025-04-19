@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/19 14:05:55 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:23:02 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -547,9 +547,9 @@ void	ft_split_test(void)
 	ft_free_split_main(split3, 2);
 }
 
-void	ft_substr_test(void)
+void	ft_itoa_test(void)
 {
-	print_divisor_title("ft_substr");
+	print_divisor_title("ft_itoa");
 	// me faltan test
 }
 int	main(void)
@@ -580,5 +580,6 @@ int	main(void)
 	// ft_strjoin_test();
 	// ft_strtrim_test();
 	// ft_split_test();
+	ft_itoa_test();
 	return (0);
 }
