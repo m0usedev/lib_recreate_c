@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/18 16:49:50 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/19 10:52:48 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -452,6 +452,46 @@ void	ft_strjoin_test(void)
 	free(res);
 }
 
+void	print_result_ft_strtrim_test(const char *desc, const char *result,
+		const char *expected)
+{
+	printf("%s\n", desc);
+	printf("  Resultado: \"%s\"\n", result ? result : "NULL");
+	printf("  Esperado : \"%s\"\n\n", expected ? expected : "NULL");
+}
+
+void	ft_strtrim_test(void)
+{
+	print_divisor_title("ft_strtrim");
+	// 1. s1 = null -> null
+	print_result_ft_strtrim_test("Test 1: s1 = NULL, set = \"x0\"",
+		ft_strtrim(NULL, "x0"), NULL);
+	// 2. set = null -> s1
+	print_result_ft_strtrim_test("Test 2: s1 = \"x0\", set = NULL",
+		ft_strtrim("x0", NULL), "x0");
+	// 3. s1 = \"\" set = \"x0\" -> \"\"
+	print_result_ft_strtrim_test("Test 3: s1 = \"\", set = \"x0\"",
+		ft_strtrim("", "x0"), "");
+	// 4. s1 = \"x0\", set = \"\" -> \"x0\"
+	print_result_ft_strtrim_test("Test 4: s1 = \"x0\", set = \"\"",
+		ft_strtrim("x0", ""), "x0");
+	// 5. s1 = \"x0\", set = \"x0\" -> \"\"
+	print_result_ft_strtrim_test("Test 5: s1 = \"x0\", set = \"x0\"",
+		ft_strtrim("x0", "x0"), "");
+	// 6. s1 = \"x0l0l0\", set = \"x0\" -> \"l0l\"
+	print_result_ft_strtrim_test("Test 6: s1 = \"x0l0l0\", set = \"x0\"",
+		ft_strtrim("x0l0l0", "x0"), "l0l");
+	// 7. s1 = \"x0l0\", set = \"x0\" -> \"l\"
+	print_result_ft_strtrim_test("Test 7: s1 = \"x0l0\", set = \"x0\"",
+		ft_strtrim("x0l0", "x0"), "l");
+}
+
+void	ft_split_test(void)
+{
+	print_divisor_title("ft_split");
+	// me faltan test
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -478,5 +518,6 @@ int	main(void)
 	// ft_strdup_test();
 	// ft_substr_test();
 	// ft_strjoin_test();
+	// ft_strtrim_test();
 	return (0);
 }
