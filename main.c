@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/19 10:52:48 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:05:55 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -462,36 +462,96 @@ void	print_result_ft_strtrim_test(const char *desc, const char *result,
 
 void	ft_strtrim_test(void)
 {
+	char	*str;
+
 	print_divisor_title("ft_strtrim");
-	// 1. s1 = null -> null
-	print_result_ft_strtrim_test("Test 1: s1 = NULL, set = \"x0\"",
-		ft_strtrim(NULL, "x0"), NULL);
-	// 2. set = null -> s1
-	print_result_ft_strtrim_test("Test 2: s1 = \"x0\", set = NULL",
-		ft_strtrim("x0", NULL), "x0");
+	// 1. s1 = NULL -> NULL
+	str = ft_strtrim(NULL, "x0");
+	print_result_ft_strtrim_test("Test 1: s1 = NULL, set = \"x0\"", str, NULL);
+	free(str);
+	// 2. set = NULL -> s1
+	str = ft_strtrim("x0", NULL);
+	print_result_ft_strtrim_test("Test 2: s1 = \"x0\", set = NULL", str, "x0");
+	free(str);
 	// 3. s1 = \"\" set = \"x0\" -> \"\"
-	print_result_ft_strtrim_test("Test 3: s1 = \"\", set = \"x0\"",
-		ft_strtrim("", "x0"), "");
+	str = ft_strtrim("", "x0");
+	print_result_ft_strtrim_test("Test 3: s1 = \"\", set = \"x0\"", str, "");
+	free(str);
 	// 4. s1 = \"x0\", set = \"\" -> \"x0\"
-	print_result_ft_strtrim_test("Test 4: s1 = \"x0\", set = \"\"",
-		ft_strtrim("x0", ""), "x0");
+	str = ft_strtrim("x0", "");
+	print_result_ft_strtrim_test("Test 4: s1 = \"x0\", set = \"\"", str, "x0");
+	free(str);
 	// 5. s1 = \"x0\", set = \"x0\" -> \"\"
-	print_result_ft_strtrim_test("Test 5: s1 = \"x0\", set = \"x0\"",
-		ft_strtrim("x0", "x0"), "");
+	str = ft_strtrim("x0", "x0");
+	print_result_ft_strtrim_test("Test 5: s1 = \"x0\", set = \"x0\"", str, "");
+	free(str);
 	// 6. s1 = \"x0l0l0\", set = \"x0\" -> \"l0l\"
-	print_result_ft_strtrim_test("Test 6: s1 = \"x0l0l0\", set = \"x0\"",
-		ft_strtrim("x0l0l0", "x0"), "l0l");
+	str = ft_strtrim("x0l0l0", "x0");
+	print_result_ft_strtrim_test("Test 6: s1 = \"x0l0l0\", set = \"x0\"", str,
+		"l0l");
+	free(str);
 	// 7. s1 = \"x0l0\", set = \"x0\" -> \"l\"
-	print_result_ft_strtrim_test("Test 7: s1 = \"x0l0\", set = \"x0\"",
-		ft_strtrim("x0l0", "x0"), "l");
+	str = ft_strtrim("x0l0", "x0");
+	print_result_ft_strtrim_test("Test 7: s1 = \"x0l0\", set = \"x0\"", str,
+		"l");
+	free(str);
+}
+
+static void	print_split_result(char **split)
+{
+	size_t	i;
+
+	i = 0;
+	while (split && split[i])
+	{
+		printf("[%s]\n", split[i]);
+		i++;
+	}
+}
+
+static char	**ft_free_split_main(char **split, size_t num_subs)
+{
+	if (!split)
+		return (NULL);
+	while (num_subs > 0)
+		free(split[num_subs--]);
+	free(split[0]);
+	free(split);
+	return (NULL);
 }
 
 void	ft_split_test(void)
 {
+	const char	*test1 = " Pepe   p t";
+	char		**split1;
+	const char	*test2 = " Pepe   p t  ";
+	char		**split2;
+	const char	*test3 = "Pepe   p t  ";
+	char		**split3;
+
 	print_divisor_title("ft_split");
-	// me faltan test
+	// 1. s = " Pepe   p t", c = ' '
+	printf("Test 1:\nInput: \"%s\" | Delimiter: '%c'\n", test1, ' ');
+	split1 = ft_split(test1, ' ');
+	print_split_result(split1);
+	ft_free_split_main(split1, 2); // 3 elementos -> índice máx = 2
+	// 2. s = " Pepe   p t  ", c = ' '
+	printf("Test 2:\nInput: \"%s\" | Delimiter: '%c'\n", test2, ' ');
+	split2 = ft_split(test2, ' ');
+	print_split_result(split2);
+	ft_free_split_main(split2, 2);
+	// 3. s = "Pepe   p t  ", c = ' '
+	printf("Test 3:\nInput: \"%s\" | Delimiter: '%c'\n", test3, ' ');
+	split3 = ft_split(test3, ' ');
+	print_split_result(split3);
+	ft_free_split_main(split3, 2);
 }
 
+void	ft_substr_test(void)
+{
+	print_divisor_title("ft_substr");
+	// me faltan test
+}
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -519,5 +579,6 @@ int	main(void)
 	// ft_substr_test();
 	// ft_strjoin_test();
 	// ft_strtrim_test();
+	// ft_split_test();
 	return (0);
 }
