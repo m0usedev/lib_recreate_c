@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alvaro-pc <alvaro-pc@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/19 14:23:02 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/25 23:14:03 by alvaro-pc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -547,11 +547,74 @@ void	ft_split_test(void)
 	ft_free_split_main(split3, 2);
 }
 
-void	ft_itoa_test(void)
+void print_result(const char *test_name, const char *expected, const char *got)
+{
+	int success = strcmp(expected, got) == 0;
+	printf("Test: %s\n", test_name);
+	printf("Esperado: '%s'\n", expected);
+	printf("Obtenido: '%s'\n", got);
+	printf("%s\n", success ? "\x1b[32m[OK]\x1b[0m" : "\x1b[31m[FAIL]\x1b[0m");
+	if (got[strlen(got)] == '\0')
+			printf("Finaliza en \\0: \x1b[32m[SÍ]\x1b[0m\n");
+	else
+			printf("Finaliza en \\0: \x1b[31m[NO]\x1b[0m\n");
+	printf("\n");
+}
+
+void ft_itoa_test(void)
 {
 	print_divisor_title("ft_itoa");
-	// me faltan test
+
+	char *result;
+
+	result = ft_itoa(-234);
+	print_result("ft_itoa(-234)", "-234", result);
+	free(result);
+
+	result = ft_itoa(234);
+	print_result("ft_itoa(234)", "234", result);
+	free(result);
+
+	result = ft_itoa(0);
+	print_result("ft_itoa(0)", "0", result);
+	free(result);
+
+	result = ft_itoa(2147483647);
+	print_result("ft_itoa(2147483647)", "2147483647", result);
+	free(result);
+
+	result = ft_itoa(-2147483647);
+	print_result("ft_itoa(-2147483647)", "-2147483647", result);
+	free(result);
+
+	result = ft_itoa(-2147483648);
+	print_result("ft_itoa(-2147483648)", "-2147483648", result);
+	free(result);
+
+	// Test extra sugerido para cubrir mas casos
+	result = ft_itoa(42);
+	print_result("ft_itoa(42)", "42", result);
+	free(result);
+
+	result = ft_itoa(-1);
+	print_result("ft_itoa(-1)", "-1", result);
+	free(result);
+
+	result = ft_itoa(1000000);
+	print_result("ft_itoa(1000000)", "1000000", result);
+	free(result);
+
+	result = ft_itoa(-1000000);
+	print_result("ft_itoa(-1000000)", "-1000000", result);
+	free(result);
 }
+
+void	ft_strmapi_test(void)
+{
+	print_divisor_title("ft_strmapi");
+
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -580,6 +643,6 @@ int	main(void)
 	// ft_strjoin_test();
 	// ft_strtrim_test();
 	// ft_split_test();
-	ft_itoa_test();
+	// ft_itoa_test();
 	return (0);
 }
