@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 11:39:28 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:53:39 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -701,6 +701,52 @@ void	ft_putchar_fd_test(void)
 	close(fd);
 }
 
+void	ft_putstr_fd_test(void)
+{
+	const char	*str = "Hola, mundo!";
+	const char	*filename = "test_output.txt";
+	char		buffer[256];
+	int			fd;
+	ssize_t		bytes_read;
+
+	print_divisor_title("ft_putstr_fd");
+	// 1. Abrimos el fichero en modo escritura
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Error abriendo el fichero");
+		return ;
+	}
+	// 2. Escribimos la cadena usando ft_putchar_fd
+	for (int i = 0; str[i] != '\0'; i++)
+		ft_putchar_fd(str[i], fd);
+	close(fd);
+	// 3. Abrimos el fichero en modo lectura
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error abriendo el fichero para leer");
+		return ;
+	}
+	bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+	if (bytes_read >= 0)
+		buffer[bytes_read] = '\0';
+	else
+	{
+		perror("Error leyendo el fichero");
+		close(fd);
+		return ;
+	}
+	close(fd);
+	// 4. Comparamos
+	printf("Cadena original: %s\n", str);
+	printf("Cadena leída del fichero: %s\n", buffer);
+	if (strcmp(str, buffer) == 0)
+		printf("✅ Test pasado: las cadenas coinciden.\n");
+	else
+		printf("❌ Test fallido: las cadenas no coinciden.\n");
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -733,5 +779,6 @@ int	main(void)
 	// ft_strmapi_test();
 	// ft_striteri_test();
 	// ft_putchar_fd_test();
+	ft_putstr_fd_test();
 	return (0);
 }
