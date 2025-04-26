@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 11:25:47 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 11:33:58 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:56:41 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (fd == -1)
+		return ;
 	write(fd, &c, 1);
 }
