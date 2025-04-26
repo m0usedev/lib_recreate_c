@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 12:29:42 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 13:36:23 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -786,6 +786,57 @@ void	ft_putendl_fd_test(void)
 	close(fd);
 }
 
+void	ft_putnbr_fd_test(void)
+{
+	int		numbers[] = {-234, 234, 0, -2147483647, -2147483648, 42, -1,
+				1000000, -1000000};
+	size_t	size;
+	char	buffer[100];
+	int		fd;
+	ssize_t	bytes_read;
+	char	expected[50];
+
+	print_divisor_title("ft_putnbr_fd");
+	size = sizeof(numbers) / sizeof(numbers[0]);
+	for (size_t i = 0; i < size; i++)
+	{
+		printf("Probando guardar el número: %d\n", numbers[i]);
+		// Abrimos el archivo temporal
+		fd = open("temp_output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (fd == -1)
+		{
+			perror("Error abriendo el archivo");
+			return ;
+		}
+		// Llamamos a tu función
+		ft_putnbr_fd(numbers[i], fd);
+		// Cerramos y reabrimos para leer
+		close(fd);
+		fd = open("temp_output.txt", O_RDONLY);
+		if (fd == -1)
+		{
+			perror("Error reabriendo el archivo para leer");
+			return ;
+		}
+		// Leemos el contenido
+		bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+		if (bytes_read < 0)
+		{
+			perror("Error leyendo el archivo");
+			close(fd);
+			return ;
+		}
+		buffer[bytes_read] = '\0'; // Null-terminate
+		// Comparamos
+		snprintf(expected, sizeof(expected), "%d", numbers[i]);
+		if (strcmp(buffer, expected) == 0)
+			printf("[OK] Se guardó correctamente: %s\n", buffer);
+		else
+			printf("[FALLO] Esperado: %s | Obtenido: %s\n", expected, buffer);
+		close(fd);
+	}
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -820,5 +871,6 @@ int	main(void)
 	// ft_putchar_fd_test();
 	// ft_putstr_fd_test();
 	// ft_putendl_fd_test();
+	ft_putnbr_fd_test();
 	return (0);
 }

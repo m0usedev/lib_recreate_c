@@ -36,7 +36,8 @@ SRC = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	main.c \
+	ft_putnbr_fd.c \
+	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
@@ -47,13 +48,13 @@ all: $(NAME)
 
 # Reglas de compilacion final
 #
-# # Regla para crear la librería estática
-# $(NAME): $(OBJ)
-# 	$(AR) $(NAME) $(OBJ)
-#
-#Regla para crear el programa ejecutable
+# Regla para crear la librería estática
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(AR) $(NAME) $(OBJ)
+#
+# #Regla para crear el programa ejecutable
+# $(NAME): $(OBJ)
+# 	$(CC) $(CFLAGS) -o $@ $^
 
 # Regla para crear los objetos (.o) a partir de los archivos fuente (.c)
 %.o: %.c
