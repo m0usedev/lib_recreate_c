@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 11:53:39 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 12:29:42 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -747,6 +747,45 @@ void	ft_putstr_fd_test(void)
 		printf("❌ Test fallido: las cadenas no coinciden.\n");
 }
 
+void	ft_putendl_fd_test(void)
+{
+	int			fd;
+	char		buffer[1024];
+	ssize_t		bytes_read;
+	const char	*test_string = "Hola mundo";
+	const char	*expected_output = "Hola mundo\n";
+
+	print_divisor_title("ft_putendl_fd");
+	// Crear un fichero temporal
+	fd = open("test_output.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		printf("Error: No se pudo crear el fichero de prueba.\n");
+		return ;
+	}
+	// Escribir usando tu función
+	ft_putendl_fd((char *)test_string, fd);
+	// Mover el puntero del fichero al inicio para leer
+	lseek(fd, 0, SEEK_SET);
+	// Leer el contenido
+	bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+	if (bytes_read >= 0)
+	{
+		buffer[bytes_read] = '\0'; // Aseguramos que es una string válida
+		if (strcmp(buffer, expected_output) == 0)
+			printf("✅ Test ft_putendl_fd: PASADO\n");
+		else
+		{
+			printf("❌ Test ft_putendl_fd: FALLADO\n");
+			printf("Esperado: \"%s\"\n", expected_output);
+			printf("Obtenido: \"%s\"\n", buffer);
+		}
+	}
+	else
+		printf("Error: No se pudo leer del fichero.\n");
+	close(fd);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -779,6 +818,7 @@ int	main(void)
 	// ft_strmapi_test();
 	// ft_striteri_test();
 	// ft_putchar_fd_test();
-	ft_putstr_fd_test();
+	// ft_putstr_fd_test();
+	// ft_putendl_fd_test();
 	return (0);
 }
