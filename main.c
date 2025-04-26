@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 10:43:03 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:10:42 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -634,11 +634,24 @@ void	ft_strmapi_test(void)
 	free(result);
 }
 
+void	to_upper(unsigned int i, char *c)
+{
+	(void)i;
+	if (*c >= 'a' && *c <= 'z')
+		*c = *c - ('a' - 'A');
+}
+
 void	ft_striteri_test(void)
 {
-	char	*result;
+	char	str[] = "hello";
+	char	expected[] = "HELLO";
 
 	print_divisor_title("ft_striteri");
+	printf("Cadena original: \"%s\"\n", str);
+	// Aplicamos ft_striteri
+	ft_striteri(str, to_upper);
+	printf("Resultado esperado: \"%s\"\n", expected);
+	printf("Resultado obtenido: \"%s\"\n", str);
 }
 
 int	main(void)
