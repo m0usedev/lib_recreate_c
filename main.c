@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvaro-pc <alvaro-pc@student.42.fr>        +#+  +:+       +#+        */
+/*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/25 23:14:03 by alvaro-pc        ###   ########.fr       */
+/*   Updated: 2025/04/26 10:43:03 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -547,72 +547,98 @@ void	ft_split_test(void)
 	ft_free_split_main(split3, 2);
 }
 
-void print_result(const char *test_name, const char *expected, const char *got)
+void	print_result(const char *test_name, const char *expected,
+		const char *got)
 {
-	int success = strcmp(expected, got) == 0;
+	int	success;
+
+	success = strcmp(expected, got) == 0;
 	printf("Test: %s\n", test_name);
 	printf("Esperado: '%s'\n", expected);
 	printf("Obtenido: '%s'\n", got);
 	printf("%s\n", success ? "\x1b[32m[OK]\x1b[0m" : "\x1b[31m[FAIL]\x1b[0m");
 	if (got[strlen(got)] == '\0')
-			printf("Finaliza en \\0: \x1b[32m[SÍ]\x1b[0m\n");
+		printf("Finaliza en \\0: \x1b[32m[SÍ]\x1b[0m\n");
 	else
-			printf("Finaliza en \\0: \x1b[31m[NO]\x1b[0m\n");
+		printf("Finaliza en \\0: \x1b[31m[NO]\x1b[0m\n");
 	printf("\n");
 }
 
-void ft_itoa_test(void)
+void	ft_itoa_test(void)
 {
+	char	*result;
+
 	print_divisor_title("ft_itoa");
-
-	char *result;
-
 	result = ft_itoa(-234);
 	print_result("ft_itoa(-234)", "-234", result);
 	free(result);
-
 	result = ft_itoa(234);
 	print_result("ft_itoa(234)", "234", result);
 	free(result);
-
 	result = ft_itoa(0);
 	print_result("ft_itoa(0)", "0", result);
 	free(result);
-
 	result = ft_itoa(2147483647);
 	print_result("ft_itoa(2147483647)", "2147483647", result);
 	free(result);
-
 	result = ft_itoa(-2147483647);
 	print_result("ft_itoa(-2147483647)", "-2147483647", result);
 	free(result);
-
 	result = ft_itoa(-2147483648);
 	print_result("ft_itoa(-2147483648)", "-2147483648", result);
 	free(result);
-
 	// Test extra sugerido para cubrir mas casos
 	result = ft_itoa(42);
 	print_result("ft_itoa(42)", "42", result);
 	free(result);
-
 	result = ft_itoa(-1);
 	print_result("ft_itoa(-1)", "-1", result);
 	free(result);
-
 	result = ft_itoa(1000000);
 	print_result("ft_itoa(1000000)", "1000000", result);
 	free(result);
-
 	result = ft_itoa(-1000000);
 	print_result("ft_itoa(-1000000)", "-1000000", result);
 	free(result);
 }
 
+char	add_index_to_char(unsigned int i, char c)
+{
+	return (c + i);
+}
+
+// Tu test
 void	ft_strmapi_test(void)
 {
-	print_divisor_title("ft_strmapi");
+	char	*result;
 
+	print_divisor_title("ft_strmapi");
+	const char *original = "abcd"; // Cadena de prueba
+	const char *expected = "aceg"; // Resultado esperado
+	result = ft_strmapi(original, add_index_to_char);
+	printf("Cadena original : \"%s\"\n", original);
+	printf("Cadena esperada : \"%s\"\n", expected);
+	if (result == NULL)
+	{
+		printf("Resultado       : NULL\n");
+		printf("FALLO: Resultado es NULL\n");
+	}
+	else
+	{
+		printf("Resultado       : \"%s\"\n", result);
+		if (strcmp(result, expected) == 0)
+			printf("OK: Resultado correcto.\n");
+		else
+			printf("FALLO: Resultado incorrecto.\n");
+	}
+	free(result);
+}
+
+void	ft_striteri_test(void)
+{
+	char	*result;
+
+	print_divisor_title("ft_striteri");
 }
 
 int	main(void)
@@ -644,5 +670,7 @@ int	main(void)
 	// ft_strtrim_test();
 	// ft_split_test();
 	// ft_itoa_test();
+	// ft_strmapi_test();
+	ft_striteri_test();
 	return (0);
 }
