@@ -33,6 +33,7 @@ SRC = ft_isalpha.c \
 	ft_itoa.c \
 	ft_strmapi.c \
 	ft_striteri.c \
+	ft_putchar_fd.c \
 	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)

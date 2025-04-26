@@ -6,17 +6,19 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 11:10:42 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/26 11:39:28 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <ctype.h>
+#include <fcntl.h> // Para open
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>  // Para printf
+#include <stdlib.h> // Para malloc, free
+#include <string.h> // Para strcmp
+#include <unistd.h> // Para write, read, close
 
 void	print_divisor_title(char *title)
 {
@@ -654,6 +656,51 @@ void	ft_striteri_test(void)
 	printf("Resultado obtenido: \"%s\"\n", str);
 }
 
+void	ft_putchar_fd_test(void)
+{
+	int		fd;
+	char	c;
+	int		bytes_read;
+
+	char buffer[2]; // Uno para el carácter y otro para el '\0'
+	c = 'A';
+	print_divisor_title("ft_putchar_fd");
+	// 1. Abrimos (o creamos) un fichero temporal
+	fd = open("test_putchar_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Error al abrir el fichero");
+		return ;
+	}
+	// 2. Usamos tu función para escribir un carácter
+	ft_putchar_fd(c, fd);
+	// 3. Cerramos el fichero para que los datos se guarden
+	close(fd);
+	// 4. Lo abrimos en modo lectura
+	fd = open("test_putchar_fd.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error al reabrir el fichero");
+		return ;
+	}
+	// 5. Leemos el contenido
+	bytes_read = read(fd, buffer, 1);
+	if (bytes_read == -1)
+	{
+		perror("Error al leer el fichero");
+		close(fd);
+		return ;
+	}
+	buffer[bytes_read] = '\0'; // Terminamos la cadena
+	// 6. Comprobamos que el carácter es el correcto
+	if (buffer[0] == c)
+		printf("[OK] Se escribió correctamente '%c' en el fichero.\n", c);
+	else
+		printf("[KO] Esperado: '%c', Leído: '%c'\n", c, buffer[0]);
+	// 7. Cerramos el fichero
+	close(fd);
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -684,6 +731,7 @@ int	main(void)
 	// ft_split_test();
 	// ft_itoa_test();
 	// ft_strmapi_test();
-	ft_striteri_test();
+	// ft_striteri_test();
+	// ft_putchar_fd_test();
 	return (0);
 }
