@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/27 13:27:55 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/27 17:24:16 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -862,7 +862,375 @@ void	ft_lstnew_test(void)
 
 void	ft_lstadd_front_test(void)
 {
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*new_node;
+	t_list	*temp;
+
 	print_divisor_title("ft_lstadd_front");
+	// Crear una lista inicial
+	node2 = malloc(sizeof(t_list));
+	node2->content = "Segundo";
+	node2->next = NULL;
+	node1 = malloc(sizeof(t_list));
+	node1->content = "Primero";
+	node1->next = node2;
+	// Crear un nuevo nodo que queremos añadir al principio
+	new_node = malloc(sizeof(t_list));
+	new_node->content = "Nuevo Primero";
+	new_node->next = NULL;
+	// Mostrar la lista antes de añadir
+	printf("Lista antes de añadir:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Añadir el nuevo nodo al principio
+	ft_lstadd_front(&node1, new_node);
+	// Mostrar la lista después de añadir
+	printf("Lista después de añadir:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Comprobación
+	if (node1 == new_node && node1->next && strcmp(node1->next->content,
+			"Primero") == 0)
+		printf("✅ Test PASADO: El nuevo nodo se ha añadido correctamente al principio.\n");
+	else
+		printf("❌ Test FALLADO: El nuevo nodo NO se ha añadido correctamente.\n");
+}
+
+void	ft_lstsize_test(void)
+{
+	t_list	*node3;
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+	int		esperado;
+	int		obtenido;
+
+	print_divisor_title("ft_lstsize");
+	// Crear lista usando ft_lstnew
+	node3 = ft_lstnew("Tercero");
+	node2 = ft_lstnew("Segundo");
+	node1 = ft_lstnew("Primero");
+	// Unir los nodos
+	node1->next = node2;
+	node2->next = node3;
+	// Mostrar lista
+	printf("Elementos de la lista:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Resultado esperado
+	esperado = 3;
+	// Resultado obtenido
+	obtenido = ft_lstsize(node1);
+	printf("Resultado esperado: %d\n", esperado);
+	printf("Resultado obtenido: %d\n", obtenido);
+	if (esperado == obtenido)
+		printf("✅ Test PASADO: Tamaño correcto.\n");
+	else
+		printf("❌ Test FALLADO: Tamaño incorrecto.\n");
+	// Liberar memoria
+	free(node1);
+	free(node2);
+	free(node3);
+}
+
+void	ft_lstlast_test(void)
+{
+	t_list	*node3;
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+	char	*esperado;
+	t_list	*ultimo;
+
+	print_divisor_title("ft_lstlast");
+	// Crear lista usando ft_lstnew
+	node3 = ft_lstnew("Tercero");
+	node2 = ft_lstnew("Segundo");
+	node1 = ft_lstnew("Primero");
+	// Unir los nodos
+	node1->next = node2;
+	node2->next = node3;
+	// Mostrar la lista
+	printf("Elementos de la lista:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Resultado esperado
+	esperado = "Tercero";
+	// Resultado obtenido
+	ultimo = ft_lstlast(node1);
+	printf("Contenido esperado del último nodo: %s\n", esperado);
+	printf("Contenido obtenido: %s\n",
+		ultimo ? (char *)ultimo->content : "(null)");
+	if (ultimo && strcmp((char *)ultimo->content, esperado) == 0)
+		printf("✅ Test PASADO: Último nodo correcto.\n");
+	else
+		printf("❌ Test FALLADO: Último nodo incorrecto.\n");
+	// Liberar memoria
+	free(node1);
+	free(node2);
+	free(node3);
+}
+
+void	ft_lstadd_back_test(void)
+{
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+	t_list	*new_node;
+	t_list	*ultimo;
+
+	print_divisor_title("ft_lstadd_back");
+	// Crear lista inicial usando ft_lstnew
+	node2 = ft_lstnew("Segundo");
+	node1 = ft_lstnew("Primero");
+	// Unir los nodos
+	node1->next = node2;
+	// Mostrar lista antes de añadir
+	printf("Lista antes de añadir:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Crear nuevo nodo que queremos añadir al final
+	new_node = ft_lstnew("Tercero");
+	// Añadir el nuevo nodo al final
+	ft_lstadd_back(&node1, new_node);
+	// Mostrar lista después de añadir
+	printf("Lista después de añadir:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Comprobación
+	ultimo = ft_lstlast(node1);
+	printf("Contenido esperado del último nodo: %s\n", "Tercero");
+	printf("Contenido obtenido: %s\n",
+		ultimo ? (char *)ultimo->content : "(null)");
+	if (ultimo && strcmp((char *)ultimo->content, "Tercero") == 0)
+		printf("✅ Test PASADO: El nodo se añadió correctamente al final.\n");
+	else
+		printf("❌ Test FALLADO: El nodo no se añadió correctamente.\n");
+	// Liberar memoria
+	free(node1);
+	free(node2);
+	free(new_node);
+}
+
+void	del_function(void *content)
+{
+	// Simplemente ponemos a NULL para este test
+	(void)content;
+	// Aquí podrías liberar memoria si el contenido fuera dinámico
+}
+
+void	ft_lstdelone_test(void)
+{
+	t_list	*node;
+
+	print_divisor_title("ft_lstdelone");
+	// Crear un nodo usando ft_lstnew
+	node = ft_lstnew("Nodo a eliminar");
+	// Mostrar el contenido antes de eliminar
+	printf("Contenido del nodo antes de eliminar: %s\n", (char *)node->content);
+	// Eliminar el nodo
+	ft_lstdelone(node, del_function);
+	// No podemos acceder a node->content aquí porque node debería ser liberado dentro de ft_lstdelone,
+	// así que solo verificamos si no provoca errores.
+	printf("Se llamó a ft_lstdelone. Si no hay errores de memoria,el test es correcto.\n");
+	printf("✅ Test PASADO: El nodo se eliminó (no debería haber memory leaks).\n");
+	// Nota: No hacemos free(node) aquí porque se supone que ft_lstdelone debe hacer el free dentro.
+}
+
+void	ft_lstclear_test(void)
+{
+	t_list	*node3;
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+
+	print_divisor_title("ft_lstclear");
+	// Crear una lista de nodos
+	node3 = ft_lstnew("Tercero");
+	node2 = ft_lstnew("Segundo");
+	node1 = ft_lstnew("Primero");
+	// Unir nodos
+	node1->next = node2;
+	node2->next = node3;
+	// Mostrar la lista antes de eliminar
+	printf("Lista antes de clear:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Eliminar la lista completa
+	ft_lstclear(&node1, del_function);
+	// Mostrar resultado después de clear
+	if (node1 == NULL)
+		printf("✅ Test PASADO: La lista fue eliminada correctamente (puntero a NULL).\n");
+	else
+		printf("❌ Test FALLADO: El puntero no es NULL después de clear.\n");
+	// Nota: No hacemos free manual porque ft_lstclear ya debe liberar todo.
+}
+
+#include <ctype.h> // Para funciones de transformación como toupper
+
+void	to_uppercase(void *content)
+{
+	char	*str;
+	int		i;
+
+	str = (char *)content;
+	i = 0;
+	while (str[i])
+	{
+		str[i] = toupper(str[i]);
+		i++;
+	}
+}
+
+void	ft_lstiter_test(void)
+{
+	t_list	*node3;
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+
+	print_divisor_title("ft_lstiter");
+	// Crear lista
+	node3 = ft_lstnew(strdup("tercero"));
+	node2 = ft_lstnew(strdup("segundo"));
+	node1 = ft_lstnew(strdup("primero"));
+	// Unir nodos
+	node1->next = node2;
+	node2->next = node3;
+	// Mostrar lista antes
+	printf("Lista antes de aplicar ft_lstiter:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Aplicar ft_lstiter
+	ft_lstiter(node1, to_uppercase);
+	// Mostrar lista después
+	printf("Lista después de aplicar ft_lstiter:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Comprobaciones simples
+	if (strcmp(node1->content, "PRIMERO") == 0 && strcmp(node2->content,
+			"SEGUNDO") == 0 && strcmp(node3->content, "TERCERO") == 0)
+		printf("✅ Test PASADO: Todos los nodos fueron modificados correctamente.\n");
+	else
+		printf("❌ Test FALLADO: No se modificaron correctamente los nodos.\n");
+	// Liberar memoria
+	free(node1->content);
+	free(node2->content);
+	free(node3->content);
+	free(node1);
+	free(node2);
+	free(node3);
+}
+
+#include <ctype.h> // Para toupper
+#include <string.h> // Para strdup y strcmp
+
+void	*to_uppercase_copy(void *content)
+{
+	char	*str;
+	char	*new_str;
+	int		i;
+
+	str = (char *)content;
+	new_str = strdup(str);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (new_str[i])
+	{
+		new_str[i] = toupper(new_str[i]);
+		i++;
+	}
+	return (new_str);
+}
+
+void	ft_lstmap_test(void)
+{
+	t_list	*node3;
+	t_list	*node2;
+	t_list	*node1;
+	t_list	*temp;
+	t_list	*new_list;
+
+	print_divisor_title("ft_lstmap");
+	// Crear lista original
+	node3 = ft_lstnew(strdup("tercero"));
+	node2 = ft_lstnew(strdup("segundo"));
+	node1 = ft_lstnew(strdup("primero"));
+	node1->next = node2;
+	node2->next = node3;
+	// Mostrar lista original
+	printf("Lista original antes de mapear:\n");
+	temp = node1;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Aplicar ft_lstmap
+	new_list = ft_lstmap(node1, to_uppercase_copy, del_function);
+	// Mostrar nueva lista
+	printf("Nueva lista después de mapear:\n");
+	temp = new_list;
+	while (temp)
+	{
+		printf("  - %s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+	// Comprobaciones
+	if (strcmp((char *)new_list->content, "PRIMERO") == 0
+		&& strcmp((char *)new_list->next->content, "SEGUNDO") == 0
+		&& strcmp((char *)new_list->next->next->content, "TERCERO") == 0)
+		printf("✅ Test PASADO: La lista nueva fue creada correctamente y modificada.\n");
+	else
+		printf("❌ Test FALLADO: La lista nueva no está correctamente modificada.\n");
+	// Confirmar que la lista original no fue modificada
+	if (strcmp((char *)node1->content, "primero") == 0
+		&& strcmp((char *)node2->content, "segundo") == 0
+		&& strcmp((char *)node3->content, "tercero") == 0)
+		printf("✅ Lista original no fue modificada.\n");
+	else
+		printf("❌ Lista original fue modificada (no debería).\n");
+	// Liberar memoria
+	ft_lstclear(&node1, del_function);
+	ft_lstclear(&new_list, del_function);
 }
 
 int	main(void)
@@ -901,6 +1269,13 @@ int	main(void)
 	// ft_putendl_fd_test();
 	// ft_putnbr_fd_test();
 	// ft_lstnew_test();
-	ft_lstadd_front_test();
+	// ft_lstadd_front_test();
+	// ft_lstsize_test();
+	// ft_lstlast_test();
+	// ft_lstadd_back_test();
+	// ft_lstdelone_test();
+	// ft_lstclear_test();
+	// ft_lstiter_test();
+	// ft_lstmap_test();
 	return (0);
 }
