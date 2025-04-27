@@ -42,7 +42,8 @@ SRC = ft_isalpha.c \
 OBJ = $(SRC:.c=.o)
 SRC_BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \
-	ft_lstsize.c
+	ft_lstsize.c \
+	ft_lstlast.c
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
 RM = rm -f  # Comando para eliminar archivos
