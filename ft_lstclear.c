@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 15:19:21 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/27 15:40:51 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/27 15:50:44 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*node;
 
-	if (!lst)
+	if (!lst || !del)
 		return ;
 	while (*lst)
 	{
