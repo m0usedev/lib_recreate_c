@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/26 13:36:23 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/27 12:43:03 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -837,6 +837,11 @@ void	ft_putnbr_fd_test(void)
 	}
 }
 
+void	ft_lstnew_test(void)
+{
+	print_divisor_title("ft_lstnew");
+}
+
 int	main(void)
 {
 	// ft_isalpha_test();
@@ -871,6 +876,7 @@ int	main(void)
 	// ft_putchar_fd_test();
 	// ft_putstr_fd_test();
 	// ft_putendl_fd_test();
-	ft_putnbr_fd_test();
+	// ft_putnbr_fd_test();
+	ft_lstnew_test();
 	return (0);
 }
