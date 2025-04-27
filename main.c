@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 10:58:58 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/27 12:43:03 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/04/27 13:27:55 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -839,7 +839,30 @@ void	ft_putnbr_fd_test(void)
 
 void	ft_lstnew_test(void)
 {
+	char	*content;
+	t_list	*node;
+
 	print_divisor_title("ft_lstnew");
+	// Crear un contenido de prueba
+	content = "Hola, mundo";
+	// Llamar a la función ft_lstnew
+	node = ft_lstnew(content);
+	// Comprobar si el nodo se ha creado correctamente
+	if (node == NULL)
+		printf("Error: node es NULL\n");
+	else if (node->content != content)
+		printf("Error: content no coincide\n");
+	else if (node->next != NULL)
+		printf("Error: next no es NULL\n");
+	else
+		printf("Test correcto: nodo creado correctamente\n");
+	// Liberar memoria
+	free(node);
+}
+
+void	ft_lstadd_front_test(void)
+{
+	print_divisor_title("ft_lstadd_front");
 }
 
 int	main(void)
@@ -877,6 +900,7 @@ int	main(void)
 	// ft_putstr_fd_test();
 	// ft_putendl_fd_test();
 	// ft_putnbr_fd_test();
-	ft_lstnew_test();
+	// ft_lstnew_test();
+	ft_lstadd_front_test();
 	return (0);
 }

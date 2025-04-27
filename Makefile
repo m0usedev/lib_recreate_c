@@ -40,7 +40,9 @@ SRC = ft_isalpha.c \
 	# main.c \
 	# Aquí deberías poner tus archivos fuente
 OBJ = $(SRC:.c=.o)
-SRC_BONUS = ft_lstnew.c
+SRC_BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 AR = ar rcs  # Comando para crear la librería estática
 RM = rm -f  # Comando para eliminar archivos
@@ -64,7 +66,7 @@ $(NAME): $(OBJ)
 
 # Regla para limpiar los objetos
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_BONUS)
 
 # Regla para eliminar todo (librería y objetos)
 fclean: clean
