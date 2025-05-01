@@ -6,7 +6,7 @@
 /*   By: asobrino <asobrino@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 10:53:55 by asobrino          #+#    #+#             */
-/*   Updated: 2025/04/19 14:03:47 by asobrino         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:29:23 by asobrino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static char	**ft_free_split(char **split, size_t num_subs)
 	if (!split)
 		return (NULL);
 	while (num_subs > 0)
-		free(split[num_subs--]);
-	free(split[0]);
+		free(split[--num_subs]);
 	free(split);
 	return (NULL);
 }
@@ -65,7 +64,7 @@ char	**ft_split(char const *s, char c)
 				len_sub = ft_strchr(s, c) - s;
 			split[i++] = ft_substr(s, 0, len_sub);
 			if (!split[i - 1])
-				return (ft_free_split(split, i - 2));
+				return (ft_free_split(split, i));
 			s += len_sub;
 		}
 	}
