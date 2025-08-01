@@ -41,6 +41,11 @@
      - [Compilar programa](#compilar-programa)
      - [Compilar una librería estática](#compilar-una-libreria-estatica)
 
+# Funciones
+## Manipulacion de cadenas
+### ft_strlen
+Longitud de la cadena.
+###
 # Makefile
 
 Su función principal es automatizar la compilación de programas (especialmente en C/C++), aunque también puede usarse para otros tipos de tareas repetitivas (como tests, limpieza de archivos, despliegues, etc.).
