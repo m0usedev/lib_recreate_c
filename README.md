@@ -43,9 +43,15 @@
 
 # Funciones
 ## Manipulacion de cadenas
-### ft_strlen
-Longitud de la cadena.
-###
+- **ft_strlen**: Longitud de la cadena.
+- **ft_isalpha**: Determina si un caracter es alfabetico.
+- **ft_isdigit**: Determina si un caracter es numerico.
+- **ft_isalnum**: Determina si un caracter es alfabetico o numerico.
+- **ft_isascii**: Determina si un caracter es ascii.
+- **ft_isprint**: Detemina si un caracter es imprimible.
+- **ft_memset**: Rellena una memoria s de c bytes n posiciones desde el principio.
+- **ft_bzero**: Rellena n bytes de la memoria s de '\0'.
+- **ft_memcpy**: Copia los n bytes de memoria de src en dest, pero sin evitar solamapiento de memoria.
 # Makefile
 
 Su función principal es automatizar la compilación de programas (especialmente en C/C++), aunque también puede usarse para otros tipos de tareas repetitivas (como tests, limpieza de archivos, despliegues, etc.).
