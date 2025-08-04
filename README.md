@@ -52,6 +52,9 @@
 - **ft_memset**: Rellena una memoria s de c bytes n posiciones desde el principio.
 - **ft_bzero**: Rellena n bytes de la memoria s de '\0'.
 - **ft_memcpy**: Copia los n bytes de memoria de src en dest, pero sin evitar solamapiento de memoria.
+- **ft_memmove**: Copia los n bytes de memoria de src en dest, pero evitando solamapiento de memoria.
+- **ft_strcpy**: Copiar la memoria de src en dest por las dimensiones completas de dest, mas un espacio reservado para '\0', sabiendo al final si hubo truncamiento (no se copio todo src en dest) o no (se copio todo el contenido de src en dest).
+- **ft_strlcat**: Concatena la memorai de src en dest, y con resultado para saber si hubo truncamiento.
 # Makefile
 
 Su función principal es automatizar la compilación de programas (especialmente en C/C++), aunque también puede usarse para otros tipos de tareas repetitivas (como tests, limpieza de archivos, despliegues, etc.).
